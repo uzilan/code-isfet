@@ -1,11 +1,15 @@
 package se.webstep.visumaat;
 
 import org.apache.commons.io.FileUtils;
-import se.webstep.visumaat.reports.*;
+import se.webstep.visumaat.reports.OrganizationalMetrics;
+import se.webstep.visumaat.reports.VcsLog;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
+
+import static spark.Spark.get;
+import static spark.Spark.staticFileLocation;
 
 /**
  * A class which helps visualizing results of running the fabulous code-maat reports.
@@ -21,18 +25,24 @@ public class Visumaat {
      */
     public Visumaat() {
 
+        staticFileLocation("/public");
+
         Properties props = readProperties();
 
         VcsLog vcsLog = new VcsLog(props);
-        Summary summary = new Summary();
+//        Summary summary = new Summary();
         OrganizationalMetrics organizationalMetrics = new OrganizationalMetrics();
-        LogicalCoupling logicalCoupling = new LogicalCoupling();
-        CodeAge codeAge = new CodeAge();
-        AbsoluteChurn absoluteChurn = new AbsoluteChurn();
-        ChurnByAuthor churnByAuthor = new ChurnByAuthor();
-        ChurnByEntity churnByEntity = new ChurnByEntity();
-        EntityOwnership entityOwnership = new EntityOwnership();
-        EntityEffort entityEffort = new EntityEffort();
+//        LogicalCoupling logicalCoupling = new LogicalCoupling();
+//        CodeAge codeAge = new CodeAge();
+//        AbsoluteChurn absoluteChurn = new AbsoluteChurn();
+//        ChurnByAuthor churnByAuthor = new ChurnByAuthor();
+//        ChurnByEntity churnByEntity = new ChurnByEntity();
+//        EntityOwnership entityOwnership = new EntityOwnership();
+//        EntityEffort entityEffort = new EntityEffort();
+
+        get("/metrics/authors", (request, response) -> {
+            return organizationalMetrics.authorsMetrics();
+        });
     }
 
     private Properties readProperties() {
