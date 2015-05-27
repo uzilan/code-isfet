@@ -40,9 +40,13 @@ public class Visumaat {
 //        EntityOwnership entityOwnership = new EntityOwnership();
 //        EntityEffort entityEffort = new EntityEffort();
 
-        get("/metrics/authors", (request, response) -> {
-            return organizationalMetrics.authorsMetrics();
-        });
+        get("/metrics/authors", (request, response) ->
+                        organizationalMetrics.authorsMetrics(OrganizationalMetrics.MetricsType.authors)
+        );
+
+        get("/metrics/revs", (request, response) ->
+                        organizationalMetrics.authorsMetrics(OrganizationalMetrics.MetricsType.revs)
+        );
     }
 
     private Properties readProperties() {
