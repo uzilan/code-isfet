@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+group 'Visumaat'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+buildDir = 'target'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'commons-io:commons-io:2.4'
+    testCompile 'junit:junit:4.11'
+}
