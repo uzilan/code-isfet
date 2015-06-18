@@ -1,5 +1,5 @@
 # The repositroy to analyze
-repo=/Users/uzilan/projects/code-maat
+repo=D:\\dev\\code-maat
 
 # The type of VCS. Could be svn, git or hg
 vcs=git
@@ -8,4 +8,4 @@ vcs=git
 date=2015-01-01
 
 # Location of the code_maat standalone jar file
-maat=/Users/uzilan/projects/code-maat/target/code-maat-0.8.6-standalone.jar
+maat=D:\\dev\\code-maat\\target\\code-maat-0.8.6-standalone.jar
